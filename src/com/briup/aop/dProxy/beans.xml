@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+   http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+   http://www.springframework.org/schema/context 
+ http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	 <bean id="account" class="com.briup.aop.pojo.Account">
+	 	<property name="id" value="10"/>
+	 	<property name="name" value="terry"/>
+	 	<property name="balance" value="10000"/>
+	 </bean>
+	 
+	 <bean id="dao" 
+	 class="com.briup.aop.dao.AccountDaoImpl"/>
+	
+	 <bean id="target" 
+	 class="com.briup.aop.service.AccountServiceImpl">
+	 	<property name="accountDao" ref="dao"/>
+	 	<property name="account" ref="account"/>
+	 </bean>
+	 
+	 <bean id="handler" class="com.briup.aop.dProxy.LogHandler">
+	 		<property name="target">
+	 			<ref bean="target"/>
+	 		</property>
+	 </bean>
+	 <bean id="factory" class="com.briup.aop.dProxy.ProxyFactoryBean">
+	 	<property name="handler" ref="handler"/>
+	 	<property name="target" ref="target"/>
+	 	<property name="interfaces">
+	 		<list>
+	 			<value>com.briup.aop.service.IAccountService</value>
+	 		</list>
+	 	</property>
+	 </bean>
+	 <bean id="proxy" factory-bean="factory" 
+	 factory-method="getObject"/>
+</beans>

@@ -1,0 +1,6 @@
+<beans>
+	<bean name="teacher" class="com.briup.bean.Teacher">
+		<property name="student" ref="stu"></property>
+	</bean>
+	<bean name="stu" class="com.briup.bean.Student"></bean>
+</beans>

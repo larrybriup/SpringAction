@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+  <bean name="account" class="com.briup.db.Account">
+  	
+  </bean>
+   <bean name="accountDao" class="com.briup.db.jdbc.JdbcDaoImpl">
+   	<property name="account" ref="account"></property>
+   	<property name="dataSource" ref="dataSource3"></property>
+   </bean>       
+  <bean name="dataSource1"	class="oracle.jdbc.pool.OracleConnectionPoolDataSource">
+		<property name="networkProtocol">
+			<value>tcp</value>
+		</property>
+		<property name="databaseName">
+			<value>xe</value>
+		</property>
+		<property name="driverType">
+			<value>thin</value>
+		</property>
+		<property name="portNumber">
+			<value>1521</value>
+		</property>
+		<property name="user">
+			<value>ex</value>
+		</property>
+		<property name="serverName">
+			<value>localhost</value>
+		</property>
+		<property name="password">
+			<value>ex</value>
+		</property>
+	</bean>        
+    <bean class="org.apache.commons.dbcp.BasicDataSource" 
+		destroy-method="close"
+		name="dataSource2">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@localhost:1521:xe</value>
+		</property>
+		<property name="username">
+			<value>ex</value>
+		</property>
+		<property name="password">
+			<value>ex</value>
+		</property>
+		<property name="maxActive"><value>80</value></property> 
+	    <property name="maxIdle"><value>20</value></property> 
+	    <property name="maxWait"><value>3000</value></property> 
+	</bean> 
+	<!-- 
+	<bean id="dataSource3" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName"><value>oracle.jdbc.driver.OracleDriver</value></property>
+  <property name="url"><value>jdbc:oracle:thin:@localhost:1521:xe</value></property>
+  <property name="username"><value>ex</value></property>
+  <property name="password"><value>ex</value></property>
+ </bean> 
+	 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	       	<property name="location">
+	       		<value>classpath:com/briup/db/jdbc/oracle.properties</value>
+	       	</property>
+	</bean>
+	<bean id="dataSource3" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		  <property name="driverClassName"><value>${jdbc.driverClassName}</value></property>
+		  <property name="url"><value>${jdbc.url}</value></property>
+		  <property name="username"><value>${jdbc.username}</value></property>
+		  <property name="password"><value>${jdbc.password}</value></property>
+	 </bean>
+	 </beans>
+           

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <bean name="student" 
+    class="com.briup.bean.Student">
+    	<property name="name">
+    		<value>zhangsan</value>
+    	</property>
+    </bean>
+    
+    <!-- 
+    	abstract="true" 表示当前的配置是一个抽象的配置,
+    	这时候我们在代码中就不能通过这个bean的名字teacher来
+    	获得相应的对象了(和java中的抽象类不能直接new对象的道理一样)
+    	
+    	但是我们可以在写一个配置去继承这个抽象的配置,当然即使当前
+    	这个配置不是抽象的,也能够被继承(和java中继承一样)
+    	
+     -->
+    
+    <bean name="teacher" 
+    class="com.briup.bean.Teacher" 
+    abstract="true">
+    	<property name="student" ref="student"></property>
+    </bean>
+    
+    <!-- 
+    	parent="teacher" 表示当前配置是继承了另外一个名字叫
+    	teacher的bean的配置,配置和配置的继承像java中的类和类
+    	直接的继承一样,子类会把父类中的对象继承过来.
+    	当然在子配置里面依然是可以覆盖父配置中已经写的配置信息.
+     -->
+    
+    <bean name="t" parent="teacher">
+    
+    	<property name="id">
+    		<value>11</value>
+    	</property>
+    	
+    	<property name="name">
+    		<value>TeacherWang</value>
+    	</property>
+    </bean>
+   
+    
+</beans>

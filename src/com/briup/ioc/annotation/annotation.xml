@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		    xmlns:context="http://www.springframework.org/schema/context"
+		    xsi:schemaLocation="
+   http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+   
+   
+   
+  <!--  
+   <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+  -->
+  <context:component-scan base-package="com.briup.ioc.annotation"/>
+  <context:annotation-config/>
+ 
+  
+  <!--  
+   <bean id="car" class="com.briup.ioc.annotation.Car" lazy-init="true">
+   		<property name="price" value="10000"/>
+   		<property name="brand" value="BMW"/>
+   </bean>
+   
+   <bean id="office" class="com.briup.ioc.annotation.Office">
+   		<property name="oNo" value="002"/>
+   </bean>
+   
+   <bean id="office1" class="com.briup.ioc.annotation.Office">
+   		<property name="oNo" value="003"/>
+   </bean>
+   
+	
+   --> 
+   <bean id="boss" class="com.briup.ioc.annotation.Boss">
+   		<constructor-arg value="inm">
+   		</constructor-arg>
+   		<property name="name" value="larry"/>
+   		<property name="car" ref="car"/>
+   		<property name="office" ref="office"/>
+   		
+   </bean>  
+</beans>
