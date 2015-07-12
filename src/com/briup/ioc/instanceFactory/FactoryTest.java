@@ -2,11 +2,12 @@ package com.briup.ioc.instanceFactory;
 
 import java.sql.Connection;
 
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FactoryTest {
-	@org.junit.Test
+	@Test
 	public void ioc_instanceFactory(){
 		String path ="com/briup/ioc/instanceFactory/instanceFactory.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(path);
