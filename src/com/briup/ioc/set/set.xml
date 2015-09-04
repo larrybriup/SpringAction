@@ -17,9 +17,6 @@
     		在bean标签中加入属性scope="prototype"
      -->
     
-    
-    
-    
     <!-- 
     	<bean name="teacher" class="..."> 
     		name属性的值是自己随便起的
@@ -27,7 +24,7 @@
     		
     	<property name="student" ref="student">
     		name属性的值表示一个方法,这里表示的是setStudent方法
-    		ref属性表示调用这个setStudent方法的时候要用的参数是名字为student的对象
+    		ref属性表示调用这个setStudent方法的时候要用的参数的类型为另一个bean student的对象
      -->
     <bean name="teacher" class="com.briup.bean.Teacher">
     	<property name="student" ref="student">
@@ -35,27 +32,22 @@
     		<ref bean="student"/> -->
     	</property>
     </bean>
-    <bean name="student" class="com.briup.bean.Student"
-     scope="prototype"></bean>
-    <!-- 可以给某一个对象起一个别名: 
-    	 这个时候,不管用student还是用s1,这个俩个名字都是
+<!--     多例模式 -->
+    <bean name="student" class="com.briup.bean.Student" scope="prototype"></bean>
+    <!-- 可以给某一个对象起一个别名: 这个时候,不管用student还是用s1,这个俩个名字都是
     	 指向的同一个Student类型的对象
     -->
     <alias name="student" alias="s1"/>
-    
     
     <!-- 可以给一个类配置多个对象,对象的名字要不同 -->
     <bean name="stu" class="com.briup.bean.Student"></bean>
     
     <!-- bean标签里面的id和name属性都可以用来标识这个配置的对象,
     	 但是id会帮我们检查给对象起的名字是否规范
-    	 (名字不能重复、不能用数字开头
-    	 、不能有空格等等),如果检查出来了那么就会报错。
-    	 name属性不会帮检查这些东西。
+    	 (名字不能重复、不能用数字开头 、不能有空格等等),如果检查出来了那么就会报错。
+    	 name属性不会检查这些东西。
      -->
     <bean id="stu1" class="com.briup.bean.Student"></bean>
-    
-    
     
     <!-- 向一个对象中,注入一些常见的类型 -->
     <bean name="s2" class="com.briup.bean.Student">
@@ -66,7 +58,6 @@
     	<property name="name">
     		<value>tom</value>
     	</property>
-    	
     	<property name="age">
     		<value>20</value>
     	</property>

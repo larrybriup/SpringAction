@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
+
 /*
  * 1,使用autowired对成员作修饰
  * 2，使用autowiredset注入
@@ -19,56 +20,90 @@ import org.springframework.stereotype.Repository;
  * */
 
 //@Component
+// @Configuration
 @Repository
-//@Configuration
 public class Boss {
-	@Value("Hello World")
+
+	@Value("1")
+	private Long id;
+
 	private String name;
-	
-	//@Autowired
-	@Resource(name="car")
+
+	@Autowired
+	@Qualifier("BossCar")
 	private Car car;
-	
-	
-	//@Autowired
-	@Resource(type=Office.class)
-	//@Qualifier("office")
+
+	@Resource(name = "iwatch")
+	private Watch watch;
+
+	@Resource(type = Office.class)
 	private Office office;
-	
-	
-	public Boss(){}
-	
-	
-	public Boss(String name, Car car, @Qualifier("office")Office office) {
-		super();
+
+	private Gun ak47;
+
+	public Boss() {
+	}
+
+	public Boss(String name, @Qualifier("car") Car car, Office office) {
 		this.name = name;
 		this.car = car;
 		this.office = office;
 	}
-	
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	@Value("Hello Briup!")
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Car getCar() {
 		return car;
 	}
-	
-	@Autowired
-	public void setCar(@Qualifier("car")Car car) {
+
+	public void setCar(Car car) {
 		this.car = car;
 	}
+
+	public Watch getWatch() {
+		return watch;
+	}
+
+	public void setWatch(Watch watch) {
+		this.watch = watch;
+	}
+
 	public Office getOffice() {
 		return office;
 	}
-	
-	@Autowired
-	public void setOffice
-	(@Qualifier("office")Office office) {
+
+	public void setOffice(Office office) {
 		this.office = office;
 	}
+
+	public Gun getAk47() {
+		return ak47;
+	}
+
+	@Autowired
+	public void setAk47(@Qualifier("gun") Gun ak47) {
+		this.ak47 = ak47;
+	}
+
+	@Override
+	public String toString() {
+		return "Boss [id=" + id + ", name=" + name + ", car=" + car + ", watch=" + watch + ", office="
+						+ office + ", ak47=" + ak47 + "]";
+	}
+
 }

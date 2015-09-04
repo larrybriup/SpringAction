@@ -3,10 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.briup.tran.Account" 
-    table="ACCOUNT">
+    <class name="com.briup.tran.Account" table="ACCOUNT">
        <id name="id" column="ID">
-       	<generator class="increment"/>
+       		<generator class="increment"/>
        </id>
        <property name="name" column="NAME"/>
        <property name="balance" column="BALANCE"/>

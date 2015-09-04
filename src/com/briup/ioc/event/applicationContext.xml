@@ -5,13 +5,10 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 
-<bean id="messageSource"
-class="org.springframework.context.support.ResourceBundleMessageSource"
->
-<property name="basename" value="briup"/>
-</bean>
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="briup" />
+	</bean>
 
-<bean id="listener" class="com.briup.ioc.event.RainListener" 
-></bean>
+	<bean id="listener" class="com.briup.ioc.event.RainListener"></bean>
 
 </beans>

@@ -1,22 +1,33 @@
-package com.briup.ioc.instanceFactory;
+package com.briup.ioc.factory_bean;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 import org.springframework.beans.factory.FactoryBean;
 
-public class ConnectionFactory{
+public class ConnectionFactoryBean implements FactoryBean {
+
 	private String driver;
 	private String url;
 	private String username;
 	private String password;
-	
-	public Object getConnection() throws Exception {
-		Class.forName(driver);
-		Connection conn = 
-			DriverManager.getConnection(url,username,password);
+
+	public Object getObject() throws Exception {
+		Class.forName(driver).newInstance();
+		Connection conn = DriverManager.getConnection(url, username, password);
 		return conn;
 	}
+	
+	@Override
+	public Class getObjectType() {
+		return Connection.class;
+	}
+	
+	@Override
+	public boolean isSingleton() {
+		return false;
+	}
+
 	public String getDriver() {
 		return driver;
 	}
@@ -48,4 +59,5 @@ public class ConnectionFactory{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 }

@@ -1,19 +1,22 @@
 package com.briup.bean;
 
+public class LifeBean {
 
-public class LifeBean{
 	private String name;
-	private LifeBean lb;
-	
-	public LifeBean getLb() {
-		return lb;
+	private LifeBean prototypeBean;
+
+	public LifeBean() {
+		System.out.println("LifeBean() constructor");
 	}
-	public void setLb(LifeBean lb) {
-		this.lb = lb;
+
+	public void init() {
+		System.out.println("this is init in lifeBean");
 	}
-	public LifeBean(){
-		System.out.println("LifeBean() cons");
+
+	public void destory() {
+		System.out.println("this is destory in lifeBean");
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -22,13 +25,13 @@ public class LifeBean{
 		System.out.println("setName() action");
 		this.name = name;
 	}
-	
-	public void init(){
-		System.out.println("this is init in lifeBean");
+
+	public LifeBean getPrototypeBean() {
+		return prototypeBean;
 	}
-	
-	public void destory(){
-		System.out.println("this is destory in lifeBean");
+
+	public void setPrototypeBean(LifeBean prototypeBean) {
+		this.prototypeBean = prototypeBean;
 	}
-	
+
 }

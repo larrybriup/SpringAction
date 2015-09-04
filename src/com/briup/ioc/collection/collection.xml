@@ -8,36 +8,44 @@
            http://www.springframework.org/schema/context/spring-context-3.2.xsd">
         
     <bean name="str" class="java.lang.String">
-    	<constructor-arg index="0" value="HAHAHA"/>
+    	<constructor-arg index="0" value="str1"/>
     </bean>
+    
     <bean name="student" class="com.briup.bean.Student">
+    	<property name="array">
+    		<array>
+    			<value>arr1</value>
+    			<value>arr2</value>
+    			<value>arr3</value>
+    		</array>
+    	</property>
     	<property name="list">
     		<list>
-    			<value>zs</value>
-    			<value>ww</value>
-    			<value>zl</value>
+    			<value>list1</value>
+    			<value>list2</value>
+    			<value>list3</value>
     			<ref bean="str"/>
     		</list>
     	</property>
-    	
     	<property name="set">
     		<set>
-    			<value>tom</value>
-    			<value>lily</value>
-    			<value>Carl</value>
-    			<value>terry</value>
+    			<value>set1</value>
+    			<value>set2</value>
+    			<value>set3</value>
+    			<value>set4</value>
     		</set>
     	</property>
-    	
     	<property name="map">
     		<map>
-    			<entry key="1" value="zhangsan"></entry>
-    			<entry key="2" value="lisi"></entry>
-    			<entry key="3" value="wangwu"></entry>
-    			<entry key="4" value="zhaoliu"></entry>
+    			<entry key="1" value="map1"></entry>
+    			<entry key="2" value="map2"></entry>
+    			<entry key="3" value="map3"></entry>
+    			<entry key="4" value="map4"></entry>
+    			<entry key="5">
+    				<value>map5</value>
+    			</entry>
     		</map>
     	</property>
-    	
     	<property name="prop">
     		<props>
     			<prop key="a">apple</prop>
@@ -46,8 +54,5 @@
     			<prop key="d">dog</prop>
     		</props>
     	</property>
-    	
     </bean>
-    
-    
 </beans>

@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 	
-	<bean id="student" class="com.briup.ioc.proEdit.Student">
-		<property name="sNo" value="100"/>
+	<bean id="person" class="com.briup.ioc.property_editor.Person">
+		<property name="id" value="100"/>
 		<property name="name" value="larry"/>
 		<property name="age" value="45"/>
 		<property name="gender" value="true"/>

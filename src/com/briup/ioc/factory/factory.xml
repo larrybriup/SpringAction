@@ -3,34 +3,30 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
            http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-    
-    
-    <!-- 
-    	因为这个类是一个工厂类,所以我们用名字conn在容器中拿对象的时候,
-    	拿到并不是这个工厂类对象,而是这个工厂类对象调用完工厂方法后所返回的对象.
-     -->
-    
-    <bean name="conn" 
-    class="com.briup.ioc.factory.ConnectionFactory">
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+           
+    <bean name="factory" class="com.briup.ioc.factory.ConnectionFactory">
     	<property name="driver">
     		<value>${driver}</value>
     	</property>
-    	
     	<property name="url">
     		<value>${url}</value>
     	</property>
-    	
     	<property name="username">
     		<value>${username}</value>
     	</property>
-    	
     	<property name="password">
     		<value>${password}</value>
     	</property>
     </bean>
+    
+    <!-- 
+    	将来通过这个conn来拿Connection对象,拿到的是名字为factory的工厂类调用完
+    	名字为getConnection方法之后所返回的对象。
+     -->
+    <bean name="conn" factory-bean="factory" factory-method="getConnection"></bean>
     
     <!-- 
     	下面配置的这个类,可以自动的帮我们去读取指定的properties文件的
@@ -38,12 +34,9 @@
     	${key}这种形式去拿文件中的value值了。
     	classpath指的是从src下面找.
      -->
-    
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     	<property name="location">
-    		<value>classpath:oracle.properties</value>
+    		<value>classpath:db.properties</value>
     	</property>
     </bean>
-    
-    
 </beans>

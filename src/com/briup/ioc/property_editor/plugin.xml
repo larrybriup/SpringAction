@@ -8,12 +8,11 @@
 	http://www.springframework.org/schema/util/spring-util-3.2.xsd
 	">
 	
-	<bean 
-	class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 		<property name="customEditors">
 			<util:map map-class="java.util.TreeMap">
-				<entry key="com.briup.ioc.proEdit.Address">
-					<value>com.briup.ioc.proEdit.AddressEditor</value>
+				<entry key="com.briup.ioc.property_editor.Address">
+					<value>com.briup.ioc.property_editor.AddressEditor</value>
 				</entry>
 			</util:map>
 		</property>

@@ -12,8 +12,7 @@
     
     	单例管理的对象:
     		1.默认情况下,spring在读取xml文件的时候,就会创建对象。
-    		2.在创建的对象的时候(先调用构造器),会去调用init-method=".."
-    		属性值中所指定的方法.
+    		2.在创建的对象的时候(先调用构造器),会去调用init-method=".."属性值中所指定的方法.
     		3.对象在被销毁的时候,会调用destroy-method="..."属性值中
     		所指定的方法.(例如调用container.destroy()方法的时候)
     		4.lazy-init="true",可以让这个对象在第一次被访问的时候创建
@@ -28,24 +27,17 @@
     	  	
     	注意:一个单例管理的对象中,注入了非单例管理的对象的情况。  	
      -->
-    
-    
-    <bean name="lbean" 
-    class="com.briup.bean.LifeBean"
-     init-method="init" 
-     destroy-method="destory" 
-     lazy-init="false">
-     	<property name="name" value="Hello World"></property>
-    	<property name="lb" ref="lb"/>
+    <bean name="singleton_bean" class="com.briup.bean.LifeBean"
+	     init-method="init" 
+	     destroy-method="destory" 
+	     lazy-init="true">
+     	<property name="name" value="Singleton LifeBean"></property>
+    	<property name="prototypeBean" ref="prototype_bean"/>
      </bean>
-     <bean name="lb" 
-    class="com.briup.bean.LifeBean"
-     init-method="init" 
-     destroy-method="destory" 
-     scope="prototype">
-     	<property name="name" value="Hello World"></property>
+     <bean name="prototype_bean" class="com.briup.bean.LifeBean"
+	     init-method="init" 
+	     destroy-method="destory" 
+	     scope="prototype">
+     	<property name="name" value="Prototype LifeBean"></property>
      </bean>
-    
-    
-    
 </beans>

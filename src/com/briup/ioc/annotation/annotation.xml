@@ -16,29 +16,19 @@
   <context:component-scan base-package="com.briup.ioc.annotation"/>
   <context:annotation-config/>
  
+   <bean id="boss" class="com.briup.ioc.annotation.Boss"></bean>  
   
   <!--  
-   <bean id="car" class="com.briup.ioc.annotation.Car" lazy-init="true">
+   <bean id="BossCar" class="com.briup.ioc.annotation.Car" lazy-init="true">
    		<property name="price" value="10000"/>
    		<property name="brand" value="BMW"/>
    </bean>
-   
-   <bean id="office" class="com.briup.ioc.annotation.Office">
-   		<property name="oNo" value="002"/>
+   <bean id="office0" class="com.briup.ioc.annotation.Office">
+   		<property name="officeNo" value="000"/>
    </bean>
    
-   <bean id="office1" class="com.briup.ioc.annotation.Office">
-   		<property name="oNo" value="003"/>
+   <bean id="office2" class="com.briup.ioc.annotation.Office">
+   		<property name="officeNo" value="002"/>
    </bean>
-   
-	
    --> 
-   <bean id="boss" class="com.briup.ioc.annotation.Boss">
-   		<constructor-arg value="inm">
-   		</constructor-arg>
-   		<property name="name" value="larry"/>
-   		<property name="car" ref="car"/>
-   		<property name="office" ref="office"/>
-   		
-   </bean>  
 </beans>

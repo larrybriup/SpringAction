@@ -7,13 +7,6 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <bean name="student" 
-    class="com.briup.bean.Student">
-    	<property name="name">
-    		<value>zhangsan</value>
-    	</property>
-    </bean>
-    
     <!-- 
     	abstract="true" 表示当前的配置是一个抽象的配置,
     	这时候我们在代码中就不能通过这个bean的名字teacher来
@@ -21,13 +14,15 @@
     	
     	但是我们可以在写一个配置去继承这个抽象的配置,当然即使当前
     	这个配置不是抽象的,也能够被继承(和java中继承一样)
-    	
      -->
-    
-    <bean name="teacher" 
-    class="com.briup.bean.Teacher" 
-    abstract="true">
+    <bean name="abstract_teacher" class="com.briup.bean.Teacher" abstract="true">
+    	<property name="name" value="Abstract Teacher"/>
     	<property name="student" ref="student"></property>
+    </bean>
+    <bean name="student" class="com.briup.bean.Student">
+    	<property name="name">
+    		<value>Larry Chen</value>
+    	</property>
     </bean>
     
     <!-- 
@@ -37,16 +32,13 @@
     	当然在子配置里面依然是可以覆盖父配置中已经写的配置信息.
      -->
     
-    <bean name="t" parent="teacher">
-    
+    <bean name="teacher" parent="abstract_teacher">
     	<property name="id">
     		<value>11</value>
     	</property>
-    	
     	<property name="name">
-    		<value>TeacherWang</value>
+    		<value>Mr. Wang</value>
     	</property>
     </bean>
-   
     
 </beans>

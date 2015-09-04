@@ -7,11 +7,10 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.briup.tran.Account;
 
-public class AccountDaoImpl 
-extends HibernateTemplate implements AccountDao{
-	
+public class AccountDaoImpl extends HibernateTemplate implements AccountDao {
+
 	private SessionFactory sessionFactory;
-	
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -23,13 +22,13 @@ extends HibernateTemplate implements AccountDao{
 	@Override
 	public void save(Account account) throws DataAccessException {
 		Session session = null;
-		try{
+		try {
 			session = sessionFactory.getCurrentSession();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			session = sessionFactory.openSession();
 		}
-			session.save(account);
+		session.save(account);
 	}
 
 	@Override

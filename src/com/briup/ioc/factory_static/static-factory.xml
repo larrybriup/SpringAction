@@ -7,10 +7,7 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.2.xsd">
     
-    
-    
-    <bean name="conn" 
-    class="com.briup.ioc.staticFactory.ConnectionFactory" 
-    factory-method="getConnection"></bean>
+    <bean name="conn" class="com.briup.ioc.factory_static.ConnectionFactory" 
+    	factory-method="getConnection"></bean>
     
 </beans>
