@@ -22,7 +22,7 @@ import com.briup.ioc.property_editor.AddressEditor;
 import com.briup.ioc.property_editor.Person;
 
 @SuppressWarnings("deprecation")
-public class IocDemo {
+public class IOCTest {
 
 	private ClassPathXmlApplicationContext container;
 
