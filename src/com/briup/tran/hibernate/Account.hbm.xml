@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.briup.tran.Account" table="ACCOUNT">
+    <class name="com.briup.tran.hibernate.Account" table="ACCOUNT">
        <id name="id" column="ID">
        		<generator class="increment"/>
        </id>

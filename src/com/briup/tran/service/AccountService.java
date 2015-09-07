@@ -1,6 +1,6 @@
 package com.briup.tran.service;
 
-import com.briup.tran.Account;
+import com.briup.tran.hibernate.Account;
 
 public interface AccountService {
 

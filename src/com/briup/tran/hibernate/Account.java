@@ -1,4 +1,4 @@
-package com.briup.tran;
+package com.briup.tran.hibernate;
 
 import java.io.Serializable;
 

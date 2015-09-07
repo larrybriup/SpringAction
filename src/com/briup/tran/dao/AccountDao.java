@@ -2,7 +2,7 @@ package com.briup.tran.dao;
 
 import org.springframework.dao.DataAccessException;
 
-import com.briup.tran.Account;
+import com.briup.tran.hibernate.Account;
 
 public interface AccountDao {
 

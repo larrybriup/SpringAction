@@ -3,7 +3,6 @@ package com.briup.tran.hibernate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.briup.tran.Account;
 import com.briup.tran.service.AccountService;
 
 public class HibernateTest {

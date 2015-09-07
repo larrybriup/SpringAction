@@ -1,7 +1,7 @@
 package com.briup.tran.service;
 
-import com.briup.tran.Account;
 import com.briup.tran.dao.AccountDao;
+import com.briup.tran.hibernate.Account;
 
 public class AccountServiceImpl implements AccountService {
 

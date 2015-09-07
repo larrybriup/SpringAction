@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import com.briup.tran.Account;
+import com.briup.tran.hibernate.Account;
 
 public class AccountDaoImpl extends HibernateTemplate implements AccountDao {
 
