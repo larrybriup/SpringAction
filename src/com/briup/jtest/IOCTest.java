@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import com.briup.bean.LifeBean;
+import com.briup.bean.MyBean;
 import com.briup.bean.Student;
 import com.briup.bean.Teacher;
 import com.briup.ioc.annotation.Boss;
@@ -35,11 +36,11 @@ public class IOCTest {
 	}
 
 	@Test
-	public void ioc_set() {
+	public void ioc_setter() {
 
 		// 要读取的xml文件路径(可能有多个文件要读取)
 		// 如果要读取多个xml文件,我们就可以声明一个String类型数组,把多个路径放进数组
-		String path = "com/briup/ioc/set/set.xml";
+		String path = "com/briup/ioc/setter/setter.xml";
 
 		/*
 		 * //创建一个spring容器对象(相当于工厂类的一个对象) ApplicationContext container = new
@@ -105,7 +106,7 @@ public class IOCTest {
 	public void ioc_life() {
 		String path = "com/briup/ioc/life/life.xml";
 		container = new ClassPathXmlApplicationContext(path);
-
+		
 		System.out.println("====================singleton================================");
 		LifeBean singletonBean1 = (LifeBean) container.getBean("singleton_bean");
 		LifeBean singletonBean2 = (LifeBean) container.getBean("singleton_bean");
@@ -118,7 +119,7 @@ public class IOCTest {
 		LifeBean prototypeBean2 = (LifeBean) container.getBean("prototype_bean");
 		System.out.println("prototypeBean1.equals(prototypeBean2) = " + prototypeBean1.equals(prototypeBean2));
 	}
-
+	
 	@Test
 	public void ioc_constructor() {
 		String path = "com/briup/ioc/constructor/constructor.xml";

@@ -14,15 +14,6 @@ public class MyBean implements BeanNameAware, BeanFactoryAware, InitializingBean
 				DisposableBean, BeanPostProcessor {
 
 	private String content;
-	private LifeBean lbean;
-
-	public LifeBean getLbean() {
-		return lbean;
-	}
-
-	public void setLbean(LifeBean lbean) {
-		this.lbean = lbean;
-	}
 
 	public String getContent() {
 		return content;
@@ -51,7 +42,7 @@ public class MyBean implements BeanNameAware, BeanFactoryAware, InitializingBean
 	// ApplicationContextAware
 	@Override
 	public void setApplicationContext(ApplicationContext ctx) throws BeansException {
-		System.out.println("Application_context:" + ctx);
+		System.out.println("----------Application_context:" + ctx);
 	}
 
 	// BeanFactoryAware
@@ -65,6 +56,13 @@ public class MyBean implements BeanNameAware, BeanFactoryAware, InitializingBean
 	public void setBeanName(String beanId) {
 		System.out.println("----------输出BeanId:" + beanId);
 	}
+	
+	// BeanPostProcessor
+	@Override
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println("我把:" + beanName + "实例化化之前的操作");
+		return bean;
+	}
 
 	// BeanPostProcessor
 	@Override
@@ -73,12 +71,6 @@ public class MyBean implements BeanNameAware, BeanFactoryAware, InitializingBean
 		return bean;
 	}
 
-	// BeanPostProcessor
-	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		System.out.println("我把:" + beanName + "实例化化之前的操作");
-		return bean;
-	}
 
 	public void close() {
 		System.out.println("MyBean now closed!");
@@ -86,6 +78,11 @@ public class MyBean implements BeanNameAware, BeanFactoryAware, InitializingBean
 
 	public void init() {
 		System.out.println("MyBean init by init-method!");
+	}
+
+	@Override
+	public String toString() {
+		return "MyBean [content=" + content + "]";
 	}
 
 }

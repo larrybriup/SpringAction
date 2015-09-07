@@ -28,7 +28,7 @@
 	</bean>
 	<bean id="factory" class="com.briup.aop.advice.dProxy.ProxyFactoryBean">
 		<property name="handler" ref="handler" />
-<!-- 		<property name="target" ref="target" /> -->
+		<property name="target" ref="target" />
 		<property name="interfaces">
 			<list>
 				<value>com.briup.aop.service.IAccountService</value>

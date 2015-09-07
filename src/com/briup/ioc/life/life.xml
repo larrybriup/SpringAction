@@ -27,6 +27,9 @@
     	  	
     	注意:一个单例管理的对象中,注入了非单例管理的对象的情况。  	
      -->
+     
+     <bean name="myBean" class="com.briup.bean.MyBean"></bean>
+     
     <bean name="singleton_bean" class="com.briup.bean.LifeBean"
 	     init-method="init" 
 	     destroy-method="destory" 
