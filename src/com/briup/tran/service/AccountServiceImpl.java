@@ -16,7 +16,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public void saveorupdate(Account account) {
+	public void saveUpdate(Account account) {
 		accountDao.save(account);
 	}
 

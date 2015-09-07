@@ -4,7 +4,7 @@ import com.briup.tran.Account;
 
 public interface AccountService {
 
-	void saveorupdate(Account account);
+	void saveUpdate(Account account);
 
 	void update(Account account);
 

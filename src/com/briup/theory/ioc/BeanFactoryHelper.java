@@ -13,6 +13,7 @@ import org.dom4j.io.SAXReader;
 public class BeanFactoryHelper {
 
 	public static Map<String, Object> parseXML(String path) throws Exception {
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, TempValue> temp = new HashMap<String, TempValue>();
 
@@ -22,20 +23,20 @@ public class BeanFactoryHelper {
 
 		Element rootElement = document.getRootElement();
 
-		List<Element> elements1 = rootElement.elements();
+		List<Element> beans = rootElement.elements();
 
-		for (Element e1 : elements1) {
+		for (Element bean : beans) {
 
-			String beanName = e1.attributeValue("name");
-			String className = e1.attributeValue("class");
+			String beanName = bean.attributeValue("name");
+			String className = bean.attributeValue("class");
 
 			Object o = Class.forName(className).newInstance();
 			map.put(beanName, o);
 
-			List<Element> elements2 = e1.elements();
-			for (Element e2 : elements2) {
-				String propertyName = e2.attributeValue("name");
-				String refName = e2.attributeValue("ref");
+			List<Element> properties = bean.elements();
+			for (Element property : properties) {
+				String propertyName = property.attributeValue("name");
+				String refName = property.attributeValue("ref");
 
 				TempValue tv = new TempValue(propertyName, refName);
 				temp.put(beanName, tv);
@@ -54,9 +55,9 @@ public class BeanFactoryHelper {
 			// "setStudent" Method
 			String methodName = getMethodName(propertyName);
 
-			Class c = o.getClass();
+			Class clazz = o.getClass();
 
-			Method m = c.getMethod(methodName, args.getClass());
+			Method m = clazz.getMethod(methodName, args.getClass());
 			// t.setStudent(s);
 			m.invoke(o, args);
 		}
@@ -65,7 +66,6 @@ public class BeanFactoryHelper {
 
 	private static String getMethodName(String s) {
 		s = s.substring(0, 1).toUpperCase() + s.substring(1, s.length());
-
 		return "set" + s;
 	}
 

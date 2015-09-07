@@ -8,32 +8,36 @@ import org.springframework.stereotype.Component;
 
 import com.briup.annotation.pojo.User;
 
-@Component(value="userDao")
-public class UserDaoImpl 
-extends  HibernateDaoSupport //HibernateTemplate
-implements UserDao{
+@Component(value = "userDao")
+public class UserDaoImpl extends HibernateDaoSupport // HibernateTemplate
+				implements UserDao {
+
 	@Override
 	public void save(User user) throws DataAccessException {
-//		super.save(user);
+		// super.save(user);
 		getHibernateTemplate().save(user);
 	}
+
 	@Override
 	public void delete(int id) throws DataAccessException {
-//		super.delete(id);
+//		 super.delete(id);
 	}
+
 	@Override
 	public void update(User user) throws DataAccessException {
-//		super.update(user);
+		// super.update(user);
 	}
+
 	@Override
 	public List<User> query() throws DataAccessException {
 		String hql = "from com.briup.annotation.User";
-//		return find(hql);
+		// return find(hql);
 		return null;
 	}
+
 	@Override
 	public User get(int id) throws DataAccessException {
-//		return get(User.class,id);
+		// return get(User.class,id);
 		return null;
 	}
 }

@@ -14,6 +14,6 @@ public class HibernateTest {
 
 		Account account = (Account) ctx.getBean("account");
 		AccountService service = (AccountService) ctx.getBean("accountService");
-		service.saveorupdate(account);
+		service.saveUpdate(account);
 	}
 }

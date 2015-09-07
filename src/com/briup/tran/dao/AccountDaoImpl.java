@@ -11,14 +11,6 @@ public class AccountDaoImpl extends HibernateTemplate implements AccountDao {
 
 	private SessionFactory sessionFactory;
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
 	@Override
 	public void save(Account account) throws DataAccessException {
 		Session session = null;
@@ -43,4 +35,11 @@ public class AccountDaoImpl extends HibernateTemplate implements AccountDao {
 		return false;
 	}
 
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 }

@@ -1,5 +1,7 @@
 package com.briup.theory.aop.dynamicProxy;
 
+import com.briup.bean.Student;
+
 
 public interface IStudentService {
 	

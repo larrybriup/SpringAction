@@ -8,32 +8,34 @@ import com.briup.aop.dao.AccountDao;
 import com.briup.aop.pojo.Account;
 
 @Component
-public class AccountServiceImpl implements IAccountService{
+public class AccountServiceImpl implements IAccountService {
+
 	private AccountDao accountDao;
 	private Account account;
-	
+
 	public AccountDao getAccountDao() {
 		return accountDao;
 	}
-	
-	@Resource(name="accountDao")
+
+	@Resource(name = "accountDao")
 	public void setAccountDao(AccountDao accountDao) {
 		this.accountDao = accountDao;
 	}
 
-
 	public Account getAccount() {
 		return account;
 	}
-	
-	
+
 	public void setAccount(Account account) {
 		this.account = account;
 	}
 
-	public void bankAction(){
+	public void bankAction() {
 		accountDao.withdraw(account, 100);
 		accountDao.deposit(account, 100);
-//		throw new RuntimeException("差不多吃饭了！");
+	}
+	
+	public void bankActionException() {
+		 throw new RuntimeException("差不多吃饭了！");
 	}
 }

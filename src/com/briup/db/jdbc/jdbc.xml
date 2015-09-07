@@ -75,7 +75,7 @@
 <!-- 	</bean> -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location">
-			<value>classpath:com/briup/db/jdbc/oracle.properties</value>
+			<value>classpath:db.properties</value>
 		</property>
 	</bean>
 	<bean id="dataSource3"

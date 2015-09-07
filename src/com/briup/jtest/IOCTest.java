@@ -1,4 +1,4 @@
-package com.briup.test;
+package com.briup.jtest;
 
 import java.sql.Connection;
 import java.util.Map;

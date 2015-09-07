@@ -4,30 +4,41 @@
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="connection.driver_class">
-			oracle.jdbc.driver.OracleDriver
-		</property>
-		<property name="connection.url">
-			jdbc:oracle:thin:@localhost:1521:xe
-		</property>
-		<property name="connection.username">ex</property>
-		<property name="connection.password">ex</property>
-		<!-- 数据库方言 -->
-		<property name="dialect">
-		org.hibernate.dialect.Oracle10gDialect
-		</property>
+<!-- 		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> -->
+<!-- 		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property> -->
+<!-- 		<property name="connection.username">ex</property> -->
+<!-- 		<property name="connection.password">ex</property> -->
+<!-- 		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property> -->
+		
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/test_db</property>
+		<property name="connection.username">test</property>
+		<property name="connection.password">test</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
 		<property name="show_sql">true</property>
-		<!-- <property name="hbm2ddl.auto">create</property> -->
-		<mapping class="com.briup.annotation.po.User"/>
+		<property name="format_sql">true</property>
+<!-- 		<property name="hbm2ddl.auto">create</property> -->
+		
+		<mapping class="com.briup.annotation.pojo.User"/>
 	</session-factory>
 	<!--
-		create table user_tab(
+		create table user_tbl(
 			id number primary key,
 			name varchar2(12) not null,
 			gender varchar2(5) not null,
 			age number,
 			birthday date
 		);
+	  
+	  create table user_tbl (
+		id int unsigned auto_increment,
+		name varchar(45) not null,
+		gender boolean not null,
+		age int unsigned not null,
+		birthday date not null,
+		primary key (id)
+	);
 	  -->
 </hibernate-configuration> 
 

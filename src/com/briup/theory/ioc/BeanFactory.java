@@ -19,13 +19,10 @@ public class BeanFactory {
 	}
 
 	private void init(String path) throws Exception {
-
 		map = BeanFactoryHelper.parseXML(path);
-
 	}
 
 	public Object getBean(String beanName) {
-
 		return map.get(beanName);
 	}
 
