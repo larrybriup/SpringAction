@@ -25,6 +25,13 @@
 
 
 	select * from user_tbl;
+	
+	select * from account;
+
+	drop table account;
+
+
+	show databases;
 
 
 
